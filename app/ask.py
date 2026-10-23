@@ -1,7 +1,8 @@
-"""第1回: 素のLLMに1回だけ質問するスクリプト。
+"""第1回: 素のLLMに質問するスクリプト。
 
 使い方:
     uv run python -m app.ask "LoRAとは何ですか？"
+    uv run python -m app.ask --temperature 0.7 "LoRAとは何ですか？"
     uv run python -m app.ask            # 質問を省略すると、講座に固有の質問をする
 
 ツールも会話履歴も持たない「素の」呼び出し。
@@ -14,6 +15,7 @@ import argparse
 
 from google import genai
 from google.genai import errors
+from google.genai import types
 
 from app.config import MODEL, api_error_message, get_api_key
 
@@ -21,12 +23,18 @@ from app.config import MODEL, api_error_message, get_api_key
 DEFAULT_QUESTION = "AIE2026の講座の宿題にある「3レベル」とは何ですか？"
 
 
-def ask(question: str) -> str:
+def ask(question: str, temperature: float | None = None) -> str:
     client = genai.Client(api_key=get_api_key())
-    response = client.models.generate_content(model=MODEL, contents=question)
+    config = types.GenerateContentConfig(temperature=temperature)
+    response = client.models.generate_content(
+        model=MODEL, contents=question, config=config
+    )
 
-    # TODO(第1回 演習): response.usage_metadata から
-    #   入力トークン数と出力トークン数を表示してみよう（Copilotに頼んでよい）
+    usage = response.usage_metadata
+    print(
+        f"[トークン] 入力: {usage.prompt_token_count}, "
+        f"出力: {usage.candidates_token_count}"
+    )
 
     return response.text
 
@@ -34,12 +42,19 @@ def ask(question: str) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description="素のLLMに質問する")
     parser.add_argument("question", nargs="?", default=DEFAULT_QUESTION)
+    parser.add_argument(
+        "--temperature",
+        type=float,
+        default=None,
+        help="生成のランダムさ（0.0〜2.0）",
+    )
     args = parser.parse_args()
 
     print(f"[model] {MODEL}")
+    print(f"[temperature] {args.temperature}")
     print(f"[質問] {args.question}\n")
     try:
-        print(ask(args.question))
+        print(ask(args.question, args.temperature))
     except errors.APIError as e:
         print(api_error_message(e.code, e.message))
         raise SystemExit(1)
