@@ -1,0 +1,47 @@
+{
+  "config": {
+    "base_model": "Qwen/Qwen3.5-0.8B",
+    "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "seed": 42,
+    "num_train_epochs": 3,
+    "warmup_steps": 6,
+    "lr": 0.0002,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "max_seq_len": 512,
+    "max_new_tokens": 256,
+    "gen": {
+      "do_sample": false
+    },
+    "work_dir": "/content/glossary_lora_lab/run_0c268864",
+    "drive_dir": "/content/drive/MyDrive/aie2026/glossary_lora_lab/run_0c268864"
+  },
+  "system_prompt": "あなたは講座の用語を説明する係です。質問に日本語で簡潔に答えてください。講座の用語集の説明として答えられない場合は、推測せず「用語集で確認が必要です。」と答えてください。",
+  "versions": {
+    "transformers": "5.18.0",
+    "peft": "0.21.1",
+    "trl": "1.14.2",
+    "accelerate": "1.15.0",
+    "datasets": "5.1.0",
+    "torch": "2.11.0+cu130"
+  },
+  "method": "LoRA（量子化なし）",
+  "task": "講座の用語集QA・範囲外は確認要求",
+  "train_records": 116,
+  "evaluation_questions": 15,
+  "training_seconds": 167.2,
+  "training_steps": 45,
+  "executed_training_myself": true,
+  "grading_completed": true,
+  "retrieval": "app/tools.py相当の文字列検索に質問全文を渡す。LLM・意味検索は使わない",
+  "data_sha256": {
+    "glossary_sft.jsonl": "d36629d3d2e90557db537f0b0d295406c64fa007b7c51aff14a3be44b942a00b",
+    "glossary.json": "3a416cac678fbc6e4fc7c26f8f03b0abb1775a5a6007590986f52febe7e7f836",
+    "evaluation_questions.json": "f9141545f3c53111f4a93ca56a619a08a0efa8b933db4bd318554e07814619d9"
+  },
+  "generation_seconds": {
+    "before": 115.915,
+    "after": 56.322,
+    "search": 0.005
+  }
+}
