@@ -1,0 +1,4 @@
+# Preserve experiment files exactly, including their recorded SHA-256 hashes.
+notebooks/results_baseline/** -text
+notebooks/results_glossary/** -text
+glossary_sft.jsonl -text

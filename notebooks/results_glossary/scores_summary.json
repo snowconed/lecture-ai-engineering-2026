@@ -1,0 +1,83 @@
+[
+  {
+    "method": "before",
+    "category": "absent",
+    "n": 5,
+    "mean_score_0_to_2": 0.0,
+    "full_credit_rate": 0.0,
+    "unsupported_rate": 0.8,
+    "abstention_rate": 0.0
+  },
+  {
+    "method": "before",
+    "category": "known",
+    "n": 5,
+    "mean_score_0_to_2": 0.2,
+    "full_credit_rate": 0.0,
+    "unsupported_rate": 0.8,
+    "abstention_rate": 0.0
+  },
+  {
+    "method": "before",
+    "category": "paraphrase",
+    "n": 5,
+    "mean_score_0_to_2": 0.2,
+    "full_credit_rate": 0.0,
+    "unsupported_rate": 1.0,
+    "abstention_rate": 0.0
+  },
+  {
+    "method": "after",
+    "category": "absent",
+    "n": 5,
+    "mean_score_0_to_2": 0.0,
+    "full_credit_rate": 0.0,
+    "unsupported_rate": 1.0,
+    "abstention_rate": 0.0
+  },
+  {
+    "method": "after",
+    "category": "known",
+    "n": 5,
+    "mean_score_0_to_2": 0.4,
+    "full_credit_rate": 0.0,
+    "unsupported_rate": 1.0,
+    "abstention_rate": 0.0
+  },
+  {
+    "method": "after",
+    "category": "paraphrase",
+    "n": 5,
+    "mean_score_0_to_2": 0.2,
+    "full_credit_rate": 0.0,
+    "unsupported_rate": 1.0,
+    "abstention_rate": 0.0
+  },
+  {
+    "method": "search",
+    "category": "absent",
+    "n": 5,
+    "mean_score_0_to_2": 2.0,
+    "full_credit_rate": 1.0,
+    "unsupported_rate": 0.0,
+    "abstention_rate": 1.0
+  },
+  {
+    "method": "search",
+    "category": "known",
+    "n": 5,
+    "mean_score_0_to_2": 2.0,
+    "full_credit_rate": 1.0,
+    "unsupported_rate": 0.0,
+    "abstention_rate": 0.0
+  },
+  {
+    "method": "search",
+    "category": "paraphrase",
+    "n": 5,
+    "mean_score_0_to_2": 0.8,
+    "full_credit_rate": 0.4,
+    "unsupported_rate": 0.0,
+    "abstention_rate": 0.4
+  }
+]
